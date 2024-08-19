@@ -1,0 +1,164 @@
+version: "3"
+services:
+ spring-cloud:
+   build: Spring-Cloud/
+   container_name: spring-cloud
+   restart: always
+   network_mode: "host"
+   hostname: localhost
+   ports:
+    - 8762:8762
+
+ api-gateway:
+   build: api-gateway/
+   container_name: gympro-api-gateway
+   depends_on:
+     -  spring-cloud
+   restart: always
+   network_mode: "host"
+   hostname: localhost
+   ports:
+     - 8006:8006
+ zookeeper:
+   image: wurstmeister/zookeeper
+   container_name: zookeeper
+   ports:
+     - 2181:2181
+   restart: always
+   network_mode: "host"
+   hostname: localhost
+ kafka:
+   image: wurstmeister/kafka
+   container_name: kafka
+   network_mode: "host"
+   hostname: localhost
+   ports:
+     - 9092:9092
+   environment:
+     KAFKA_ADVERTISED_HOST_NAME: localhost
+     KAFKA_ZOOKEEPER_CONNECT: zookeeper:2181
+   restart: always
+
+ mongodb:
+   image: mongo:latest
+   container_name: mongo-container
+   network_mode: host
+   hostname: localhost
+   ports:
+     - 27017:27017
+
+ mysql:
+   image: mysql:latest
+   ports:
+     - 3306:3306
+   container_name: mysql-container
+   network_mode: "host"
+   hostname: localhost
+   environment:
+     MYSQL_USERNAME: root
+     MYSQL_PASSWORD: root
+     MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
+
+ admin-service:
+    container_name: gympro-admin-service
+    build: admin-service/
+    restart: always
+    network_mode: "host"
+    hostname: localhost
+    ports:
+      - 8010:8010
+    depends_on:
+      - api-gateway
+
+ notification-service:
+    container_name: gympro-notification-service
+    build: notification-service/
+    restart: always
+    network_mode: "host"
+    hostname: localhost
+    ports:
+       - 8014:8014
+    depends_on:
+       - api-gateway
+       - spring-cloud
+ chatting-service:
+    container_name: gympro-chatting-service
+    build: chatting-service/
+    restart: always
+    network_mode: "host"
+    hostname: localhost
+    ports:
+      - 8011:8011
+    depends_on:
+      - api-gateway
+
+
+ event-service:
+    container_name: gympro-event-service
+    build: event-service/
+    restart: always
+    network_mode: "host"
+    hostname: localhost
+    ports:
+      - 8016:8016
+    depends_on:
+      - api-gateway
+ payment-service:
+    container_name: gympro-payment-service
+    build: payment-service/
+    network_mode: "host"
+    hostname: localhost
+    ports:
+      - 8015:8015
+    depends_on:
+      - api-gateway
+ product-webapp-service:
+    container_name: gympro-product-webapp-service
+    build: product-webapp-service/
+    ports:
+      - 8019:8019
+    depends_on:
+      - api-gateway
+    network_mode: "host"
+    hostname: localhost
+    restart: on-failure
+ registration:
+    container_name: gympro-registration
+    build: Registration/
+    restart: always
+    ports:
+      - 8017:8017
+    depends_on:
+      - api-gateway
+    network_mode: "host"
+    hostname: localhost
+
+
+ login-service:
+    container_name: gympro-login-service
+    build: login-service/
+    ports:
+      - 8013:8013
+    depends_on:
+      - api-gateway
+    network_mode: "host"
+    hostname: localhost
+    restart: on-failure
+
+ feedback-service:
+    container_name: gympro-feedback-service
+    build: feedback-service/
+    network_mode: "host"
+    hostname: localhost
+    ports:
+      - 8018:8018
+    depends_on:
+      -  api-gateway
+    restart: on-failure
+
+
+
+
+
+
+

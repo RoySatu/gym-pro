@@ -1,0 +1,123 @@
+/* Style for the <div class="fdiv"> */
+.fdiv {
+  background-color: #f0f0f0;
+  padding: 10px;
+  margin-bottom: 20px;
+}
+
+/* Style for the <h1 class="Mainhead"> */
+.Mainhead {
+  color: #333;
+  font-size: 24px;
+}
+
+/* Style for the <div class="sdiv"> */
+.sdiv {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  margin-top: 20px; /* Add margin at the top */
+}
+
+/* Style for the <button> elements inside <div class="sdiv"> */
+.sdiv button {
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  border-radius: 4px;
+  margin: 10px 0; /* Add margin between buttons */
+}
+
+/* Style for the <div id="todayBooking"> */
+#todayBooking {
+  background-color: #f9f9f9;
+  padding: 20px;
+  border: 1px solid #ccc;
+  margin-bottom: 20px;
+}
+
+/* Style for the <div id="UpcomingBooking"> */
+#UpcomingBooking {
+  background-color: #f9f9f9;
+  padding: 20px;
+  border: 1px solid #ccc;
+  margin-bottom: 20px;
+}
+
+/* Style for the <div id="ExpiredBooking"> */
+#ExpiredBooking {
+  background-color: #f9f9f9;
+  padding: 20px;
+  border: 1px solid #ccc;
+  margin-bottom: 20px;
+}
+
+/* Style for the <h2> elements inside the booking sections */
+h2 {
+  color: #333;
+  font-size: 20px;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+/* Style for the <div class="container"> */
+.container {
+  margin: 0 auto;
+}
+
+/* Style for the <div class="row"> */
+.row {
+  display: flex;
+  flex-wrap: wrap; /* Allow flex items to wrap to the next row if needed */
+  margin: 0 -15px;
+}
+
+/* Style for the <div class="col-md-8"> */
+.col-md-8 {
+  padding: 0 15px;
+  display: inline-flex;
+  flex-direction: row;
+}
+
+/* Style for the <div class="card mb-8"> */
+.card.mb-8 {
+  border: 1px solid #ccc;
+  margin-bottom: 20px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  width: fit-content; /* Adjust the width to fit the content */
+  padding: 0 15px;
+  display: flex;
+  flex-direction: row;
+}
+/* Style for the <div class="col-md-8"> */
+
+
+
+/* Style for the <div class="card-body"> */
+/* Style for the <div class="card-body"> */
+.card-body {
+  width: fit-content; /* Adjust the width to fit the content */
+  padding: 20px;
+  margin: 0 auto; /* Center the card body horizontally */
+}
+
+
+/* Style for the <h3 class="card-title"> */
+.card-title {
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+/* Style for the <p> elements inside the card body */
+.card-body p {
+  margin-bottom: 5px;
+}
+
+/* Style for the <strong> elements inside the card body */
+.card-body strong {
+  font-weight: bold;
+}
